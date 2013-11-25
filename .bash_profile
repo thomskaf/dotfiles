@@ -36,4 +36,7 @@ alias lsdot="ls -AdF .[a-zA-Z0-9]*"
 alias .="du -sh"
 # Lock the computer
 alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
-
+# Lines of code per user on Git
+alias git-users="git ls-files -z | xargs -0n1 git blame -w | ruby -n -e '\$_ =~ /^.*\((.*?)\s[\d]{4}/; puts \$1.strip' | sort -f | uniq -c | sort -n"
+# Get HTTP status of given URL
+alias http_status="curl -sL -w '%{http_code}\n' '$0' -o /dev/null"
