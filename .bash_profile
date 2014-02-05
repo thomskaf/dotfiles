@@ -3,10 +3,10 @@
 export LANG=no_NO.UTF-8                 # Norwegian Viking
 export LC_ALL=$LANG
 export ARCHFLAGS="-arch x86_64"         # 64-bit architecture
-export HISTSIZE=10000                   # The number of shell commands saved in the history list ~/.bash_history
+export HISTSIZE=10000                   # The number of shell command events saved in the history list ~/.bash_history
 export HISTCONTROL=ignoreboth           # Don’t save duplicates
-export HISTIGNORE=ls:ps:pwd:clear       # Neather "ls", "ps", "pwd", or "clear" will appear in history
-export PYTHONSTARTUP=~/.pythonstartup   # Python start up script
+export HISTIGNORE=ls:ps:pwd:clear       # Neither "ls", "ps", "pwd", or "clear" will appear in history
+export PYTHONSTARTUP=~/.pythonstartup   # Python startup script
 
 
 # Terminal colors
@@ -40,3 +40,6 @@ alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resour
 alias git-users="git ls-files -z | xargs -0n1 git blame -w | ruby -n -e '\$_ =~ /^.*\((.*?)\s[\d]{4}/; puts \$1.strip' | sort -f | uniq -c | sort -n"
 # Get HTTP status of given URL
 alias http_status="curl -sL -w '%{http_code}\n' '$0' -o /dev/null"
+
+# http://php-osx.liip.ch/
+export PATH=/usr/local/php5/bin:$PATH
