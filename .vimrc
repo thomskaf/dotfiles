@@ -11,6 +11,8 @@ set nowrap          " Don't wrap lines
 set title           " Show the filename in the window titlebar
 set encoding=utf-8 nobomb       " Use UTF-8 without BOM
 set backspace=indent,eol,start  " Allow backspacing over everything in insert mode
+set ruler            " Enable the ruler
+autocmd FileType python set colorcolumn=80  " Sets the colorcolumn to 80 for .py files 
 
 if &t_Co > 2 || has("gui_running")  " Switch syntax highlighting on, when the terminal has colors
     syntax on
