@@ -20,7 +20,7 @@ export LSCOLORS="exfxcxdxbxegedabagacad"  # Specifies how to color specific item
 export LS_OPTIONS="--color=auto"          # Enables color output and displaying in the long format by default.
 
 
-# A couple of handy shell aliases 
+# A couple of handy shell aliases
 # -------------------------------
 # Get current date and time
 alias now="date +'%m.%B %T'"
@@ -40,6 +40,13 @@ alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resour
 alias git-users="git ls-files -z | xargs -0n1 git blame -w | ruby -n -e '\$_ =~ /^.*\((.*?)\s[\d]{4}/; puts \$1.strip' | sort -f | uniq -c | sort -n"
 # Get HTTP status of given URL
 alias http_status="curl -sL -w '%{http_code}\n' '$0' -o /dev/null"
+# Pretty-print JSON - $ cat foo.json | ppjson
+alias ppjson="python -m json.tool"}
+# Create Python 3 virtual environment
+alias py3env="virtualenv --python=/usr/local/bin/python3.4"
+# Get name server(s) of domain
+get_ns() { dig +short NS $1 | rev | cut -c 2- | rev; }
+alias ns=get_ns
 
 # http://php-osx.liip.ch/
 export PATH=/usr/local/php5/bin:$PATH
