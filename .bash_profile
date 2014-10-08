@@ -8,13 +8,27 @@ export HISTCONTROL=ignoreboth       # Don’t save duplicates
 export HISTIGNORE=ls:ps:pwd:clear   # Neither "ls", "ps", "pwd", or "clear" will appear in history
 
 
+# Function to assemble the Git parsing art of the prompt.
+git_prompt () {
+  if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    return 0
+  fi
+  git_branch=$(git branch 2>/dev/null | sed -n '/^\*/s/^\* //p')
+  if git diff --quiet 2>/dev/null >&2; then
+    git_color=`tput setaf 2`
+  else
+    git_color=`tput setaf 1`
+  fi
+  echo "($git_color$git_branch`tput sgr0`)"
+}
+
 # Terminal colors
 NM="\[\033[0;38m\]"  # No background and white lines
 HI="\[\033[0;35m\]"  # Letter colors
 SI="\[\033[0;33m\]"  # Current directory
 IN="\[\033[0m\]"     # Texten man skriver
-export PS1="$NM$HI\u $SI\w$NM: $IN"       # BASH prompt
-export CLICOLOR=1                         # Simply enable coloring of terminal
+export PROMPT_COMMAND='PS1="$NM$HI\u $SI\w$NM$(git_prompt): $IN"'  # The holy BASH prompt
+export CLICOLOR=1                         # Simply enables coloring of the terminal
 export LSCOLORS="exfxcxdxbxegedabagacad"  # Specifies how to color specific items
 export LS_OPTIONS="--color=auto"          # Enables color output and displaying in the long format by default.
 
