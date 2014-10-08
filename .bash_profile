@@ -1,11 +1,11 @@
 # ~/.bash_profile
 # Set the OS X Terminal default profile to "Pro" and check the "Anitalias text" checkbox.
-export LANG=no_NO.UTF-8             # Norwegian Viking
+export LANG=no_NO.UTF-8             # Norwegian Viking.
 export LC_ALL=$LANG
-export ARCHFLAGS="-arch x86_64"     # 64-bit architecture
-export HISTSIZE=10000               # The number of shell command events saved in the history list ~/.bash_history
-export HISTCONTROL=ignoreboth       # Don’t save duplicates
-export HISTIGNORE=ls:ps:pwd:clear   # Neither "ls", "ps", "pwd", or "clear" will appear in history
+export ARCHFLAGS="-arch x86_64"     # 64-bit architecture.
+export HISTSIZE=10000               # The number of shell command events saved in the history list ~/.bash_history.
+export HISTCONTROL=ignoreboth       # Don’t save duplicates.
+export HISTIGNORE=ls:ps:pwd:clear   # Neither "ls", "ps", "pwd", or "clear" will appear in history.
 
 
 # Function to assemble the Git parsing art of the prompt.
@@ -23,13 +23,14 @@ git_prompt () {
 }
 
 # Terminal colors
-NM="\[\033[0;38m\]"  # No background and white lines
-HI="\[\033[0;35m\]"  # Letter colors
-SI="\[\033[0;33m\]"  # Current directory
-IN="\[\033[0m\]"     # Texten man skriver
-export PROMPT_COMMAND='PS1="$NM$HI\u $SI\w$NM$(git_prompt): $IN"'  # The holy BASH prompt
-export CLICOLOR=1                         # Simply enables coloring of the terminal
-export LSCOLORS="exfxcxdxbxegedabagacad"  # Specifies how to color specific items
+# ---------------
+NM="\[\033[0;38m\]"  # No background and white lines.
+HI="\[\033[0;35m\]"  # Letter colors.
+SI="\[\033[0;33m\]"  # Current directory.
+IN="\[\033[0m\]"     # Texten man skriver.
+export PROMPT_COMMAND='PS1="$NM$HI\u $SI\w$NM$(git_prompt): $IN"'  # The holy BASH prompt.
+export CLICOLOR=1                         # Simply enables coloring of the terminal.
+export LSCOLORS="exfxcxdxbxegedabagacad"  # Specifies how to color specific items.
 export LS_OPTIONS="--color=auto"          # Enables color output and displaying in the long format by default.
 
 
