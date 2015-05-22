@@ -64,6 +64,7 @@ export PROMPT_COMMAND=set_bash_prompt     # The holy BASH promt.
 export CLICOLOR=1                         # Simply enables coloring of the terminal.
 export LSCOLORS="exfxcxdxbxegedabagacad"  # Specifies how to color specific items.
 export LS_OPTIONS="--color=auto"          # Enables color output and displaying in the long format by default.
+export GREP_OPTIONS='--color=auto -n'     # Colorize and display the line number of the matched string.
 
 
 # A couple of handy shell aliases
@@ -96,4 +97,6 @@ alias mx="host -t mx"
 function get_ns() { dig +short NS $1 | rev | cut -c 2- | rev; }
 # Get the absolute path to given file.
 function ap() { pushd . > /dev/null; if [ -d "$1" ]; then cd "$1"; dirs -l +0; else cd "`dirname \"$1\"`"; cur_dir=`dirs -l +0`; if [ "$cur_dir" == "/" ]; then echo "$cur_dir`basename \"$1\"`"; else echo "$cur_dir/`basename \"$1\"`"; fi; fi; popd > /dev/null; }
+# Build and update the locate database.
+alias updatedb="sudo /usr/libexec/locate.updatedb"
 
