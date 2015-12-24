@@ -6,7 +6,6 @@ export HISTSIZE=10000               # The number of shell command events saved i
 export HISTCONTROL=ignoreboth       # Don’t save duplicates.
 export HISTIGNORE=ls:ps:pwd:clear   # Neither "ls", "ps", "pwd", or "clear" will appear in history.
 
-
 # Determine any active Python virtualenv details.
 function set_virtualenv () {
   if test -z "$VIRTUAL_ENV" ; then
@@ -16,6 +15,10 @@ function set_virtualenv () {
     PYTHON_VIRTUALENV="${TXTCYN}(`basename \"$VIRTUAL_ENV\"`)${COLOR_NONE}"
   fi
 }
+
+# Override OS X's version of Git.
+export PATH=/usr/local/git/bin:$PATH
+
 # Assemble the Git parsing art of the prompt.
 git_prompt () {
   if ! git rev-parse --git-dir > /dev/null 2>&1; then
@@ -66,7 +69,6 @@ export LSCOLORS="exfxcxdxbxegedabagacad"  # Specifies how to color specific item
 export LS_OPTIONS="--color=auto"          # Enables color output and displaying in the long format by default.
 export GREP_OPTIONS='--color=auto -n'     # Colorize and display the line number of the matched string.
 
-
 # A couple of handy shell aliases
 # -------------------------------
 # Get current date and time.
@@ -94,9 +96,10 @@ alias py3env="virtualenv --python=/usr/local/bin/python3"
 # Get the mx record(s) for domain.
 alias mx="host -t mx"
 # Get name server(s) of domain.
-function get_ns() { dig +short NS $1 | rev | cut -c 2- | rev; }
+function getns() { dig +short NS $1 | rev | cut -c 2- | rev; }
 # Get the absolute path to given file.
 function ap() { pushd . > /dev/null; if [ -d "$1" ]; then cd "$1"; dirs -l +0; else cd "`dirname \"$1\"`"; cur_dir=`dirs -l +0`; if [ "$cur_dir" == "/" ]; then echo "$cur_dir`basename \"$1\"`"; else echo "$cur_dir/`basename \"$1\"`"; fi; fi; popd > /dev/null; }
 # Build and update the locate database.
 alias updatedb="sudo /usr/libexec/locate.updatedb"
-
+# Recursively delete all .pyc files as well as any __pycache__ folders.
+alias rmpyc="find . -name '*.pyc' -delete -o -name '__pycache__' -type d -delete"
