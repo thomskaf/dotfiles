@@ -1,0 +1,8 @@
+[
+    // Paste and Indent
+    { "keys": ["super+v"], "command": "paste_and_indent" },
+    { "keys": ["super+shift+v"], "command": "paste" },
+
+    // Reindent Keyboard shortcut
+    { "keys": ["super+shift+r"],  "command": "reindent" }
+]
