@@ -103,3 +103,27 @@ function ap() { pushd . > /dev/null; if [ -d "$1" ]; then cd "$1"; dirs -l +0; e
 alias updatedb="sudo /usr/libexec/locate.updatedb"
 # Recursively delete all .pyc files as well as any __pycache__ folders.
 alias rmpyc="find . -name '*.pyc' -delete -o -name '__pycache__' -type d -delete"
+# Create new file, make it executable and open it in vim.
+alias v='_(){ touch $1; chmod +x $1; vim $1; };_'
+# Execute..
+alias +x="chmod +x"
+##
+# Open git diff in Sublime.
+##
+gd() {
+    if [ $# -eq 0 ]
+        then
+            git diff | sublime
+        #else
+        #    git diff $@ | sublime
+    fi
+}
+###
+# Open a new tab to the current working directory.
+##
+nt() {
+    osascript -e 'tell application "Terminal"' \
+    -e 'tell application "System Events" to tell process "Terminal" to keystroke "t" using command down' \
+    -e "do script with command \"cd `pwd`;clear\" in selected tab of the front window" \
+    -e 'end tell' &> /dev/null
+}
