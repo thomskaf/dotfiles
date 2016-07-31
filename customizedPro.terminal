@@ -64,6 +64,8 @@
 	<true/>
 	<key>ShowShellCommandInTitle</key>
 	<false/>
+	<key>ShowTTYNameInTabTitle</key>
+	<false/>
 	<key>ShowTTYNameInTitle</key>
 	<false/>
 	<key>ShowWindowSettingsNameInTitle</key>
@@ -90,10 +92,12 @@
 	<false/>
 	<key>VisualBellOnlyWhenMuted</key>
 	<false/>
+	<key>columnCount</key>
+	<integer>110</integer>
 	<key>name</key>
 	<string>customizedPro</string>
 	<key>rowCount</key>
-	<integer>36</integer>
+	<integer>30</integer>
 	<key>shellExitAction</key>
 	<integer>2</integer>
 	<key>type</key>
